@@ -1,6 +1,6 @@
-package za.ac.cput.Domain.Entities;
+package za.ac.cput.Domain.Entities.Lookup;
 
-import java.util.Objects;
+import za.ac.cput.Domain.Entities.Address;
 
 /**
  * Joshua Julies
@@ -39,13 +39,6 @@ public class EmployeeAddress {
         public static Address address;
 
         public EmployeeAddressBuilder(){
-            //validation
-            if(this.staffId.equals(null)){
-                throw new IllegalArgumentException("Staff Id should not be null.");
-            }if(address.equals(null)){
-                throw new IllegalArgumentException("Address object should not be null.");
-            }
-
             this.staffId = staffId;
             this.address = address;
         }
@@ -61,6 +54,13 @@ public class EmployeeAddress {
         }
 
         public EmployeeAddress build(){
+            //validation
+            if(this.staffId.equals(null)){
+                throw new IllegalArgumentException("Staff Id should not be null.");
+            }if(address.equals(null)){
+                throw new IllegalArgumentException("Address object should not be null.");
+            }
+
             return new EmployeeAddress(this);
         }
     }

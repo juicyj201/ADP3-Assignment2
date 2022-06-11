@@ -13,6 +13,6 @@ public class AppTest
     @Test
     public void shouldAnswerWithTrue()
     {
-        Assertions.assertTrue( true );
+        //Assertions.assertTrue( true );
     }
 }
