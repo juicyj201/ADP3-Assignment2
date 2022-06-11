@@ -93,21 +93,6 @@ public class Address {
         public static City city;
 
         public AddressBuilder(){
-            //validation
-            if(this.unitNumber.equals(null)){
-                throw new IllegalArgumentException("Unit Number should not be null.");
-            }if(this.complexName.equals(null)){
-                throw new IllegalArgumentException("The Complex Name should not be null.");
-            }if(this.streetNumber.equals(null)){
-                throw new IllegalArgumentException("Street Number should not be null.");
-            }if(this.streetName.equals(null)){
-                throw new IllegalArgumentException("Street Name should not be null.");
-            }if(this.postalCode < 1000 || this.postalCode >9999 ){
-                throw new IllegalArgumentException("Postal Code should not be smaller than 1000 and larger than 9999.");
-            }if(this.city.equals(null)){
-                throw new IllegalArgumentException("City object should not be null.");
-            }
-
             this.unitNumber = unitNumber;
             this.complexName = complexName;
             this.streetNumber = streetNumber;
@@ -147,6 +132,21 @@ public class Address {
         }
 
         public Address build(){
+            //validation
+            if(this.unitNumber.equals(null)){
+                throw new IllegalArgumentException("Unit Number should not be null.");
+            }if(this.complexName.equals(null)){
+                throw new IllegalArgumentException("The Complex Name should not be null.");
+            }if(this.streetNumber.equals(null)){
+                throw new IllegalArgumentException("Street Number should not be null.");
+            }if(this.streetName.equals(null)){
+                throw new IllegalArgumentException("Street Name should not be null.");
+            }if(this.postalCode < 1000 || this.postalCode > 9999 ){
+                throw new IllegalArgumentException("Postal Code should not be smaller than 1000 and larger than 9999.");
+            }if(this.city.equals(null)){
+                throw new IllegalArgumentException("City object should not be null.");
+            }
+
             return new Address(this);
         }
     }
