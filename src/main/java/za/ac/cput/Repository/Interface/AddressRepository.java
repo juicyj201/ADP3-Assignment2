@@ -1,10 +1,9 @@
 package za.ac.cput.Repository.Interface;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import za.ac.cput.Domain.Entities.Address;
 
-import javax.persistence.Id;
-import java.util.*;
 
 /**
  * Joshua Julies
@@ -14,8 +13,6 @@ import java.util.*;
  **/
 
 @Repository
-public interface AddressRepository extends IRepository<Address> {
+public interface AddressRepository extends JpaRepository<Address, String> {
     //classes inheriting or implementing this repository will have access to CrudRepo operations
-    @Override
-    public Address update(String compositeId, Address entity);
 }
