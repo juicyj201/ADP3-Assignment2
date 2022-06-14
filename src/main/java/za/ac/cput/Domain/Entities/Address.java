@@ -1,5 +1,10 @@
 package za.ac.cput.Domain.Entities;
 
+import org.jetbrains.annotations.NotNull;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
 /**
@@ -9,10 +14,34 @@ import java.util.Objects;
  * Question 1
  */
 
+@Entity(name = "Address")
 public class Address {
+    @Column(nullable = false)
+    @NotNull
     private final String unitNumber, complexName, streetNumber, streetName;
+    @Column(nullable = false)
+    @NotNull
     private final int postalCode;
+    @Column(nullable = false)
+    @NotNull
     private final City city;
+
+    //composite key with mandatory attributes
+    @Id
+    @Column(nullable = false, unique = true)
+    @NotNull
+    private String compositeId;
+
+    public Address() {
+        this.unitNumber = AddressBuilder.unitNumber;
+        this.complexName = AddressBuilder.complexName;
+        this.streetNumber = AddressBuilder.streetNumber;
+        this.streetName = AddressBuilder.streetName;
+        this.postalCode = AddressBuilder.postalCode;
+        this.city = AddressBuilder.city;
+
+        this.compositeId = streetNumber + streetName + postalCode;// + city.toString();
+    }
 
     public Address(AddressBuilder builder){
         this.unitNumber = AddressBuilder.unitNumber;
@@ -21,6 +50,8 @@ public class Address {
         this.streetName = AddressBuilder.streetName;
         this.postalCode = AddressBuilder.postalCode;
         this.city = AddressBuilder.city;
+
+        this.compositeId = streetNumber + streetName + postalCode;// + city.toString();
     }
 
     public String getUnitNumber() {
@@ -47,11 +78,15 @@ public class Address {
         return city;
     }
 
+    @Id
+    public String getCompositeId(){
+        return compositeId = streetNumber + streetName + postalCode;// + city.toString();
+    }
 
     @Override
     public String toString() {
         return "Address{" +
-                "unitNumber='" + unitNumber + '\'' +
+                ", unitNumber='" + unitNumber + '\'' +
                 ", complexName='" + complexName + '\'' +
                 ", streetNumber='" + streetNumber + '\'' +
                 ", streetName='" + streetName + '\'' +
@@ -143,9 +178,9 @@ public class Address {
                 throw new IllegalArgumentException("Street Name should not be null.");
             }if(this.postalCode < 1000 || this.postalCode > 9999 ){
                 throw new IllegalArgumentException("Postal Code should not be smaller than 1000 and larger than 9999.");
-            }if(this.city.equals(null)){
+            }/**if(this.city.equals(null)){
                 throw new IllegalArgumentException("City object should not be null.");
-            }
+            }**/
 
             return new Address(this);
         }
