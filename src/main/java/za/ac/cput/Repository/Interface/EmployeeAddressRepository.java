@@ -1,12 +1,20 @@
 package za.ac.cput.Repository.Interface;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import za.ac.cput.Domain.Entities.Address;
 import za.ac.cput.Domain.Entities.Lookup.EmployeeAddress;
 
+import java.util.List;
+import java.util.Optional;
+
+/**
+ * Joshua Julies
+ * 220102473
+ * ----------
+ * Question 3
+ */
+
 @Repository
-public interface EmployeeAddressRepository extends IRepository<EmployeeAddress> {
-    //classes inheriting or implementing this repository will have access to CrudRepo operations
-    @Override
-    public EmployeeAddress update(String Id, EmployeeAddress entity);
+public interface EmployeeAddressRepository extends JpaRepository<EmployeeAddress, String> {
+    //classes inheriting or implementing this repository will have access to JpaRepo operations
 }

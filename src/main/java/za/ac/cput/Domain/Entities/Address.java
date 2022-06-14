@@ -1,10 +1,8 @@
 package za.ac.cput.Domain.Entities;
 
-import org.jetbrains.annotations.NotNull;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.persistence.Id;
+
 import java.util.Objects;
 
 /**
@@ -17,19 +15,15 @@ import java.util.Objects;
 @Entity(name = "Address")
 public class Address {
     @Column(nullable = false)
-    @NotNull
     private final String unitNumber, complexName, streetNumber, streetName;
     @Column(nullable = false)
-    @NotNull
     private final int postalCode;
     @Column(nullable = false)
-    @NotNull
     private final City city;
 
     //composite key with mandatory attributes
     @Id
     @Column(nullable = false, unique = true)
-    @NotNull
     private String compositeId;
 
     public Address() {
@@ -54,31 +48,38 @@ public class Address {
         this.compositeId = streetNumber + streetName + postalCode;// + city.toString();
     }
 
+    @Column(name="unitNumber")
     public String getUnitNumber() {
         return unitNumber;
     }
 
+    @Column(name="complexName")
     public String getComplexName() {
         return complexName;
     }
 
+    @Column(name="streetNumnber")
     public String getStreetNumber() {
         return streetNumber;
     }
 
+    @Column(name="streetName")
     public String getStreetName() {
         return streetName;
     }
 
+    @Column(name="postalCode")
     public int getPostalCode() {
         return postalCode;
     }
 
+    @Column(name="city")
     public City getCity() {
         return city;
     }
 
     @Id
+    @Column(name="compositeId")
     public String getCompositeId(){
         return compositeId = streetNumber + streetName + postalCode;// + city.toString();
     }
