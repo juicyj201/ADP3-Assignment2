@@ -2,6 +2,10 @@ package za.ac.cput.Domain.Entities.Lookup;
 
 import za.ac.cput.Domain.Entities.Address;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Joshua Julies
  * 220102473
@@ -9,19 +13,31 @@ import za.ac.cput.Domain.Entities.Address;
  * Question 1
  */
 
+@Entity(name="EmployeeAddress")
 public class EmployeeAddress {
+    @Id
+    @Column(nullable = false)
     private final String staffId;
+    @Column(nullable = false)
     private final Address address;
+
+    public EmployeeAddress() {
+        this.staffId = EmployeeAddressBuilder.staffId;
+        this.address = EmployeeAddressBuilder.address;
+    }
 
     public EmployeeAddress(EmployeeAddressBuilder builder){
         this.staffId = EmployeeAddressBuilder.staffId;
         this.address = EmployeeAddressBuilder.address;
     }
 
+    @Id
+    @Column(name="staffId")
     public String getStaffId() {
         return staffId;
     }
 
+    @Column(name="address")
     public Address getAddress() {
         return address;
     }

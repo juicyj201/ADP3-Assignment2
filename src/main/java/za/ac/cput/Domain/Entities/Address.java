@@ -1,5 +1,8 @@
 package za.ac.cput.Domain.Entities;
 
+import javax.persistence.*;
+import javax.persistence.Id;
+
 import java.util.Objects;
 
 /**
@@ -9,10 +12,30 @@ import java.util.Objects;
  * Question 1
  */
 
+@Entity(name = "Address")
 public class Address {
+    @Column(nullable = false)
     private final String unitNumber, complexName, streetNumber, streetName;
+    @Column(nullable = false)
     private final int postalCode;
+    @Column(nullable = false)
     private final City city;
+
+    //composite key with mandatory attributes
+    @Id
+    @Column(nullable = false, unique = true)
+    private String compositeId;
+
+    public Address() {
+        this.unitNumber = AddressBuilder.unitNumber;
+        this.complexName = AddressBuilder.complexName;
+        this.streetNumber = AddressBuilder.streetNumber;
+        this.streetName = AddressBuilder.streetName;
+        this.postalCode = AddressBuilder.postalCode;
+        this.city = AddressBuilder.city;
+
+        this.compositeId = streetNumber + streetName + postalCode;// + city.toString();
+    }
 
     public Address(AddressBuilder builder){
         this.unitNumber = AddressBuilder.unitNumber;
@@ -21,37 +44,50 @@ public class Address {
         this.streetName = AddressBuilder.streetName;
         this.postalCode = AddressBuilder.postalCode;
         this.city = AddressBuilder.city;
+
+        this.compositeId = streetNumber + streetName + postalCode;// + city.toString();
     }
 
+    @Column(name="unitNumber")
     public String getUnitNumber() {
         return unitNumber;
     }
 
+    @Column(name="complexName")
     public String getComplexName() {
         return complexName;
     }
 
+    @Column(name="streetNumnber")
     public String getStreetNumber() {
         return streetNumber;
     }
 
+    @Column(name="streetName")
     public String getStreetName() {
         return streetName;
     }
 
+    @Column(name="postalCode")
     public int getPostalCode() {
         return postalCode;
     }
 
+    @Column(name="city")
     public City getCity() {
         return city;
     }
 
+    @Id
+    @Column(name="compositeId")
+    public String getCompositeId(){
+        return compositeId = streetNumber + streetName + postalCode;// + city.toString();
+    }
 
     @Override
     public String toString() {
         return "Address{" +
-                "unitNumber='" + unitNumber + '\'' +
+                ", unitNumber='" + unitNumber + '\'' +
                 ", complexName='" + complexName + '\'' +
                 ", streetNumber='" + streetNumber + '\'' +
                 ", streetName='" + streetName + '\'' +
@@ -143,9 +179,9 @@ public class Address {
                 throw new IllegalArgumentException("Street Name should not be null.");
             }if(this.postalCode < 1000 || this.postalCode > 9999 ){
                 throw new IllegalArgumentException("Postal Code should not be smaller than 1000 and larger than 9999.");
-            }if(this.city.equals(null)){
+            }/**if(this.city.equals(null)){
                 throw new IllegalArgumentException("City object should not be null.");
-            }
+            }**/
 
             return new Address(this);
         }
