@@ -101,16 +101,9 @@ public class Name
         public static String lastName;
 
         public NameBuilder() {
-
-            if (this.firstName.equals(null)) {
-                throw new IllegalArgumentException("First Name shouldn't be null.");
-            }
-            if (this.middleName.equals(null)) {
-                throw new IllegalArgumentException("Middle Name shouldn't be null");
-            }
-            if (this.lastName.equals(null)) {
-                throw new IllegalArgumentException("Last Name shouldn't be null.");
-            }
+            this.firstName = firstName;
+            this.middleName = middleName;
+            this.lastName = lastName;
         }
 
         public NameBuilder setFirstName(String firstName) {
@@ -130,6 +123,16 @@ public class Name
 
         public Name build()
         {
+            if (this.firstName.equals(null)) {
+                throw new IllegalArgumentException("First Name shouldn't be null.");
+            }
+            if (this.middleName.equals(null)) {
+                throw new IllegalArgumentException("Middle Name shouldn't be null");
+            }
+            if (this.lastName.equals(null)) {
+                throw new IllegalArgumentException("Last Name shouldn't be null.");
+            }
+
             return new Name(this);
         }
     }

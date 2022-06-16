@@ -1,9 +1,14 @@
 package za.ac.cput.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import za.ac.cput.Domain.Entities.Address;
+import za.ac.cput.Domain.Entities.Employee;
 import za.ac.cput.Service.Impl.AddressServiceImpl;
+import za.ac.cput.Service.Impl.EmployeeServiceImpl;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +16,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("school-management/employee")
 public class EmployeeController {
-    /**
     private final EmployeeServiceImpl service;
 
     @Autowired
@@ -20,26 +24,26 @@ public class EmployeeController {
     }
 
     @PostMapping("save")
-    private ResponseEntity<Employee> save(Employee employee){
+    public  ResponseEntity<Employee> save(Employee employee){
     Employee save = service.save(employee);
     return ResponseEntity.ok(save);
     }
 
     @GetMapping("read/{employee}")
-    private ResponseEntity<Employee> read(@PathVariable Employee employee){
-    Employee emp = this.service.read(address)
+    public ResponseEntity<Employee> read(@PathVariable Employee employee){
+    Employee emp = this.service.read(employee)
     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     return ResponseEntity.ok(emp);
     }
 
     @GetMapping("readAll")
-    private ResponseEntity<List<Employee>> readAll(){
+    public ResponseEntity<List<Employee>> readAll(){
     List<Employee> empList = this.service.readAll();
     return ResponseEntity.ok(empList);
     }
 
     @DeleteMapping("delete")
-    private ResponseEntity<Void> delete(@RequestBody Employee employee){
+    public ResponseEntity<Void> delete(@RequestBody Employee employee){
     Optional<Employee> emp = this.service.read(employee);
     if(emp.isPresent() == true) {
     this.service.delete(emp.get());
@@ -49,13 +53,13 @@ public class EmployeeController {
     }
 
     @GetMapping("getEmployeeNameByEmail/{employeeEmail}")
-    public ResponseEntity<List<String>> getEmployeeNameByEmail(@PathVariable String employeeEmail){
+    public ResponseEntity<String> getEmployeeNameByEmail(@PathVariable String employeeEmail){
         //This is a method that is static and can be called from within the EmployeeServiceImpl class.
         //The method returns a list of employee names, instead of employee objects. It is almost
         //exactly the same as the read but is static.
 
-        List<String> empNames = EmployeeServiceImpl.getEmployeeNameByEmail(employeeEmail);
-        return ResponseEntity.ok(empName);
+        String name = this.service.getEmployeeNameByEmail(employeeEmail);
+        return ResponseEntity.ok(name);
     }
 
      @GetMapping("getEmployeeNameByCity/{cityId}")
@@ -64,9 +68,9 @@ public class EmployeeController {
         //The method returns a list of employee names, instead of employee objects. It is almost
         //exactly the same as the read but is static.
 
-        List<String> empNames = EmployeeServiceImpl.getEmployeeNameByCity(cityId);
-        return ResponseEntity.ok(empNames);
+        //List<String> empNames = EmployeeServiceImpl.getEmployeeNameByCity(cityId);
+        //return ResponseEntity.ok(empNames);
+         return null;
      }
 
-    **/
 }

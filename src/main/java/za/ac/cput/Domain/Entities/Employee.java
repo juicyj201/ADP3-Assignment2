@@ -12,12 +12,13 @@ import javax.persistence.Id;
 @Entity(name = "Employee")
 public class Employee
 {
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
+    @Id
     private final String staffId;
     @Column(nullable = false)
     private final String email;
     @Column(nullable = false)
-    private final @Id Name name;
+    private final Name name;
 
     public Employee()
     {
@@ -64,16 +65,9 @@ public class Employee
         public static Name name;
 
         public EmployeeBuilder() {
-
-            if (this.staffId.equals(null)) {
-                throw new IllegalArgumentException("Staff ID shouldn't be null.");
-            }
-            if (this.email.equals(null)) {
-                throw new IllegalArgumentException("Email shouldn't be null");
-            }
-            if (this.name.equals(null)) {
-                throw new IllegalArgumentException("Name shouldn't be null.");
-            }
+            this.staffId = staffId;
+            this.email = email;
+            this.name = name;
         }
 
         public EmployeeBuilder setStaffId(String staffId) {
@@ -93,6 +87,16 @@ public class Employee
 
         public Employee build()
         {
+            if (this.staffId.equals(null)) {
+                throw new IllegalArgumentException("Staff ID shouldn't be null.");
+            }
+            if (this.email.equals(null)) {
+                throw new IllegalArgumentException("Email shouldn't be null");
+            }
+            if (this.name.equals(null)) {
+                throw new IllegalArgumentException("Name shouldn't be null.");
+            }
+
             return new Employee(this);
         }
     }

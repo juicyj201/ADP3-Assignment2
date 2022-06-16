@@ -26,6 +26,6 @@ public interface EmployeeService extends IService<Employee>
     @Override
     List<Employee> readAll();
 
-    Employee getEmployeeNameByEmail(String employeeEmail);
+    public String getEmployeeNameByEmail(String employeeEmail);
     List<Employee> getAll();
 }
