@@ -12,7 +12,7 @@ import java.util.Objects;
  * Question 1
  */
 
-@Entity(name = "Address")
+@Entity
 public class Address {
     @Column(nullable = false)
     private final String unitNumber, complexName, streetNumber, streetName;
