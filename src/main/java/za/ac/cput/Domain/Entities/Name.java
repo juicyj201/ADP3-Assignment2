@@ -1,6 +1,8 @@
 package za.ac.cput.Domain.Entities;
 
 import java.util.Objects;
+import javax.persistence.*;
+import javax.persistence.Id;
 
 /**
  * Matthew Jones
@@ -8,19 +10,39 @@ import java.util.Objects;
  * Question 1
  */
 
+@Entity(name = "Name")
 public class Name
 {
+    @Column(nullable = false)
     private String firstName;
+    @Column(nullable = false)
     private String middleName;
+    @Column(nullable = false)
     private String lastName;
+
+    @Id
+    @Column(nullable = false, unique = true)
+    private String compositeId;
+
+    public Name()
+    {
+        this.firstName = NameBuilder.firstName;
+        this.lastName = NameBuilder.lastName;
+        this.middleName = NameBuilder.middleName;
+
+        this.compositeId = firstName + lastName;
+    }
 
     public Name(NameBuilder builder)
     {
         this.firstName = builder.firstName;
         this.middleName = builder.middleName;
         this.lastName = builder.lastName;
+
+        this.compositeId = firstName + lastName;
     }
 
+    @Column(name = "firstName")
     public String getFirstName() {
         return firstName;
     }
@@ -29,6 +51,7 @@ public class Name
         this.firstName = firstName;
     }
 
+    @Column(name = "middleName")
     public String getMiddleName() {
         return middleName;
     }
@@ -37,12 +60,19 @@ public class Name
         this.middleName = middleName;
     }
 
+    @Column(name = "lastName")
     public String getLastName() {
         return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Id
+    @Column(name = "compositeId")
+    public String getCompositeId() {
+        return compositeId;
     }
 
     @Override
@@ -78,9 +108,9 @@ public class Name
 
     public static class NameBuilder
     {
-        public String firstName;
-        public String middleName;
-        public String lastName;
+        public static String firstName;
+        public static String middleName;
+        public static String lastName;
 
         public NameBuilder() {
 
