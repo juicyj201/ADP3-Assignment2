@@ -14,15 +14,15 @@ import javax.persistence.Id;
 public class Name
 {
     @Column(nullable = false)
-    private String firstName;
+    private final String firstName;
     @Column(nullable = false)
-    private String middleName;
+    private final String middleName;
     @Column(nullable = false)
-    private String lastName;
+    private final String lastName;
 
     @Id
     @Column(nullable = false, unique = true)
-    private String compositeId;
+    private final String compositeId;
 
     public Name()
     {
@@ -47,26 +47,14 @@ public class Name
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     @Column(name = "middleName")
     public String getMiddleName() {
         return middleName;
     }
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
     @Column(name = "lastName")
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     @Id
