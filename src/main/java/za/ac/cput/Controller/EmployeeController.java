@@ -2,16 +2,15 @@ package za.ac.cput.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import za.ac.cput.Domain.Entities.Address;
-import za.ac.cput.Service.Impl.AddressServiceImpl;
-
+import za.ac.cput.Domain.Entities.Employee;
+import za.ac.cput.Service.Impl.EmployeeServiceImpl;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 public class EmployeeController {
-    /**
-    private EmployeeServiceImpl service;
+
+    /**private EmployeeServiceImpl service;
 
     @Autowired
     public EmployeeController(EmployeeServiceImpl service){
@@ -56,5 +55,5 @@ public class EmployeeController {
         return EmployeeServiceImpl.getEmployeeNameByCity(cityId);
      }
 
-    **/
+     **/
 }
