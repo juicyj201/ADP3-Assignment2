@@ -97,7 +97,6 @@
       <version>5.2.3.Final</version>
     </dependency>
 
-
   </dependencies>
 
   <build>
