@@ -13,11 +13,11 @@ import javax.persistence.Id;
 public class Employee
 {
     @Column(nullable = false)
-    private String staffId;
+    private final String staffId;
     @Column(nullable = false)
-    private String email;
+    private final String email;
     @Column(nullable = false)
-    private @Id Name name;
+    private final @Id Name name;
 
     public Employee()
     {
@@ -38,26 +38,14 @@ public class Employee
         return staffId;
     }
 
-    public void setStaffId(String staffId) {
-        this.staffId = staffId;
-    }
-
     @Column(name = "email")
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     @Column(name = "name")
     public Name getName() {
         return name;
-    }
-
-    public void setName(Name name) {
-        this.name = name;
     }
 
     @Override
