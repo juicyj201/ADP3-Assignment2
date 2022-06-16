@@ -44,7 +44,13 @@ public class EmployeeServiceImpl implements EmployeeService
     }
 
     @Override
-    public Employee getEmployeeNameByEmail(String employeeEmail) {
+    public String getEmployeeNameByEmail(String employeeEmail) {
+        List<Employee> empName = this.empRepo.findAll();
+        for(Employee name : empName){
+            if(name.getEmail().equals(employeeEmail)){
+                return name.getName().toString();
+            }
+        }
         return null;
     }
 
