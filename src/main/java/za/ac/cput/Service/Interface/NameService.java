@@ -1,6 +1,7 @@
 package za.ac.cput.Service.Interface;
 
 import za.ac.cput.Domain.Entities.Name;
+import za.ac.cput.Repository.Interface.NameRepository;
 
 import java.util.List;
 import java.util.Optional;
