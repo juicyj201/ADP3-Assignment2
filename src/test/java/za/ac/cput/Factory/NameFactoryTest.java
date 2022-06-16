@@ -6,7 +6,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.Domain.Entities.Name;
 
-import static org.junit.jupiter.api.Assertions.*;
+/**
+ * Matthew Jones
+ * 220077681
+ * Question 2b
+ */
 
 class NameFactoryTest {
     @BeforeEach
