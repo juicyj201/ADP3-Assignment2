@@ -10,28 +10,30 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("school-management/address/")
 public class AddressController {
-    private AddressRepository repo;
-    @Autowired
-    private AddressServiceImpl service = new AddressServiceImpl(repo);
+    private AddressServiceImpl service;
 
-    @PostMapping("/address")
-    private Address save(@RequestBody Address address){
+    @Autowired
+    public AddressController(AddressServiceImpl service){
+        this.service = service;
+    }
+
+    @PostMapping("save")
+    private Address save(Address address){
         return this.service.save(address);
     }
 
-    @GetMapping
+    @GetMapping("read/{address}")
     private Optional<Address> read(@RequestBody Address address){
         return this.service.read(address);
     }
 
-    @GetMapping("/address")
+    @GetMapping("readAll")
     private List<Address> readAll(){
         return this.service.readAll();
     }
 
-    @DeleteMapping("/address")
+    @DeleteMapping("delete")
     private void delete(@RequestBody Address address){
         this.service.delete(address);
     }

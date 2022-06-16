@@ -8,9 +8,9 @@ import za.ac.cput.Factory.AddressFactory;
 import javax.persistence.Id;
 
 /**
- * Unit test for simple App.
+ * Unit test for simple SchoolManagementApplication.
  */
-public class AppTest 
+public class SchoolManagementApplicationTest
 {
     /**
      * Rigorous Test :-)

@@ -13,7 +13,7 @@ import javax.persistence.Id;
  * Question 1
  */
 
-@Entity(name="EmployeeAddress")
+@Entity
 public class EmployeeAddress {
     @Id
     @Column(nullable = false)
