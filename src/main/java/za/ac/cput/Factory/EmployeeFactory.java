@@ -7,7 +7,7 @@ import za.ac.cput.util.helper;
 /**
  * Matthew Jones
  * 220077681
- * Question 2
+ * Question 2a
  */
 
 public class EmployeeFactory

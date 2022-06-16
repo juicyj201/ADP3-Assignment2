@@ -1,16 +1,30 @@
 package za.ac.cput.Domain.Entities;
 
+import javax.persistence.*;
+import javax.persistence.Id;
+
 /**
  * Matthew Jones
  * 220077681
  * Question 1
  */
 
+@Entity(name = "Employee")
 public class Employee
 {
+    @Column(nullable = false)
     private String staffId;
+    @Column(nullable = false)
     private String email;
-    private Name name;
+    @Column(nullable = false)
+    private @Id Name name;
+
+    public Employee()
+    {
+        this.staffId = EmployeeBuilder.staffId;
+        this.email = EmployeeBuilder.email;
+        this.name = EmployeeBuilder.name;
+    }
 
     public Employee(EmployeeBuilder builder)
     {
@@ -19,6 +33,7 @@ public class Employee
         this.name = builder.name;
     }
 
+    @Column(name = "staffId")
     public String getStaffId() {
         return staffId;
     }
@@ -27,6 +42,7 @@ public class Employee
         this.staffId = staffId;
     }
 
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -35,6 +51,7 @@ public class Employee
         this.email = email;
     }
 
+    @Column(name = "name")
     public Name getName() {
         return name;
     }
@@ -54,9 +71,9 @@ public class Employee
 
     public static class EmployeeBuilder
     {
-        public String staffId;
-        public String email;
-        public Name name;
+        public static String staffId;
+        public static String email;
+        public static Name name;
 
         public EmployeeBuilder() {
 
