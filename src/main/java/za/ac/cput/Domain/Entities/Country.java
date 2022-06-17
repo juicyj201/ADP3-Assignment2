@@ -1,40 +1,45 @@
 package za.ac.cput.Domain.Entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * Delron Chad Claassen - 219360561
- * Country Entity class.
- * ++++++++++++++++
- * Question 1
+ * Country Entity class
+ * ++++++++++++++++++++++++++++++++
+ *           Question 1
+ * ++++++++++++++++++++++++++++++++
  *
  */
 
+@Entity
+@Table(name="Country")
 public class Country {
 
+    @Id
+    @Column(nullable = false)
     private String countryID;
+    @Column(nullable = false)
     private String countryName;
 
-    public Country(){};
+    public Country(){}
 
     public Country(CountryBuilder builder) {
         this.countryID = builder.countryID;
         this.countryName = builder.countryName;
     }
 
+    @Column(name="countryId")
     public String getCountryID() {
         return countryID;
     }
 
-    public void setCountryId(String countryID) {
-        this.countryID = countryID;
-    }
-
+    @Column(name="countryName")
     public String getCountryName() {
         return countryName;
-    }
-
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
     }
 
     @Override
