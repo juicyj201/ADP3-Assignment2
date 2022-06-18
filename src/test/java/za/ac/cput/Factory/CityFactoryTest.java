@@ -20,15 +20,6 @@ import za.ac.cput.util.helper;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CityFactoryTest {
-
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
-
     @Test
     void testCreateCity() {
         Country country = CountryFactory.createCountry("country001", "South Africa");
