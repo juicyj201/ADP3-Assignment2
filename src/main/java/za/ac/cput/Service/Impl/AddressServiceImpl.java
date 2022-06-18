@@ -2,7 +2,9 @@ package za.ac.cput.Service.Impl;
 
 import org.springframework.stereotype.Service;
 import za.ac.cput.Domain.Entities.Address;
+import za.ac.cput.Repository.Impl.AddressRepositoryImpl;
 import za.ac.cput.Repository.Interface.AddressRepository;
+import za.ac.cput.Repository.Interface.EmployeeRepository;
 import za.ac.cput.Service.Interface.AddressService;
 
 import java.lang.annotation.Annotation;
@@ -19,11 +21,19 @@ import java.util.Optional;
 @Service
 public class AddressServiceImpl implements AddressService {
     private final AddressRepository repo;
+    private static AddressService service;
 
-    public AddressServiceImpl(AddressRepository repo){
-        this.repo = repo;
+    public AddressServiceImpl(){
+        this.repo = AddressRepositoryImpl.getAddressRepository();
     }
 
+    public static AddressService getService(){
+        if(service == null){
+            service = new AddressServiceImpl();
+        }
+
+        return service;
+    }
 
     @Override
     public Address save(Address address) {
@@ -32,7 +42,7 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Optional<Address> read(Address address) {
-        return this.repo.findById(address.getCompositeId());
+        return this.repo.read(address.getCompositeId());
     }
 
     @Override
@@ -42,7 +52,7 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public List<Address> readAll() {
-        return this.repo.findAll();
+        return this.repo.readAll();
     }
 
     @Override

@@ -2,7 +2,11 @@ package za.ac.cput.Service.Impl;
 
 import org.springframework.stereotype.Service;
 import za.ac.cput.Domain.Entities.Lookup.EmployeeAddress;
+import za.ac.cput.Repository.Impl.AddressRepositoryImpl;
+import za.ac.cput.Repository.Impl.EmployeeAddressRepositoryImpl;
+import za.ac.cput.Repository.Interface.AddressRepository;
 import za.ac.cput.Repository.Interface.EmployeeAddressRepository;
+import za.ac.cput.Service.Interface.AddressService;
 import za.ac.cput.Service.Interface.EmployeeAddressService;
 
 import java.lang.annotation.Annotation;
@@ -19,9 +23,18 @@ import java.util.Optional;
 @Service
 public class EmployeeAddressServiceImpl implements EmployeeAddressService {
     private final EmployeeAddressRepository repo;
+    private static EmployeeAddressService service;
 
-    public EmployeeAddressServiceImpl(EmployeeAddressRepository repo){
-        this.repo = repo;
+    public EmployeeAddressServiceImpl(){
+        this.repo = EmployeeAddressRepositoryImpl.getEmployeeAddressRepository();
+    }
+
+    public static EmployeeAddressService getService(){
+        if(service == null){
+            service = new EmployeeAddressServiceImpl();
+        }
+
+        return service;
     }
 
 
@@ -32,7 +45,7 @@ public class EmployeeAddressServiceImpl implements EmployeeAddressService {
 
     @Override
     public Optional<EmployeeAddress> read(EmployeeAddress employeeAddress) {
-        return this.repo.findById(employeeAddress.getStaffId());
+        return this.repo.read(employeeAddress.getStaffId());
     }
 
     @Override
@@ -42,7 +55,7 @@ public class EmployeeAddressServiceImpl implements EmployeeAddressService {
 
     @Override
     public List<EmployeeAddress> readAll() {
-        return this.repo.findAll();
+        return this.repo.readAll();
     }
 
     @Override

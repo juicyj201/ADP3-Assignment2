@@ -4,6 +4,7 @@ import org.springframework.data.repository.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Joshua Julies
@@ -12,6 +13,9 @@ import java.util.List;
  *  Question 3
  **/
 
-public interface IRepository<T>{
-    //methods inheriting from the generic interface will obtain the JPARepo's methods
+public interface IRepository<T, ID>{
+    T save(T entity);
+    Optional<T> read(ID id);
+    List<T> readAll();
+    void delete(T entity);
 }

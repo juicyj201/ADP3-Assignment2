@@ -18,7 +18,7 @@ import za.ac.cput.Repository.Interface.EmployeeAddressRepository;
 public class EmployeeAddressServiceImplTest {
     private EmployeeAddress addr = new EmployeeAddressFactory().buildEmployeeAddress("01", new Address());
     private EmployeeAddressRepository repo = null;
-    private EmployeeAddressServiceImpl service = new EmployeeAddressServiceImpl(repo);
+    private EmployeeAddressServiceImpl service = new EmployeeAddressServiceImpl();
 
     /**
     @Test
