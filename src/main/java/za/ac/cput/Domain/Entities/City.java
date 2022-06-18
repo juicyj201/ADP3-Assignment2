@@ -1,19 +1,30 @@
 package za.ac.cput.Domain.Entities;
 
+import javax.persistence.*;
+
 /**
  * Delron Chad Claassen - 219360561
  * City Entity
- * ++++++++++++++++
- * Question 1
+ * ++++++++++++++++++++++++++++++++
+ *           Question 1
+ * ++++++++++++++++++++++++++++++++
+ *
  */
 
+@Entity
+@Table(name="City")
 public class City {
 
+    @Id
+    @Column(nullable = false)
     private String cityID;
+
+    @Column(nullable = false)
     private String cityName;
+    @Column(nullable = false)
     private Country country;
 
-    public City(){};
+    public City(){}
 
     public City(CityBuilder builder) {
         this.cityID = builder.cityID;
@@ -21,18 +32,19 @@ public class City {
         this.country = builder.country;
     }
 
-    public String setCityId(String ID) {
-        this.cityID = cityID;
-        return ID;
+    @Id
+    @Column(name = "cityId")
+    public String getCityID() {
+        return cityID;
     }
 
-    public String setCityName(String cityName) {
-        this.cityName = cityName;
+    @Column(name = "cityName")
+    public String getCityName() {
         return cityName;
     }
 
-    public Country setCountry(Country country) {
-        this.country = country;
+    @Column(name = "country")
+    public Country getCountry() {
         return country;
     }
 
@@ -50,9 +62,6 @@ public class City {
         private String cityID;
         private String cityName;
         private Country country;
-        public String getID() {
-            return cityID;
-        }
 
         public CityBuilder setID(String ID) {
             this.cityID = ID;
@@ -62,14 +71,6 @@ public class City {
         public CityBuilder setCityName(String cityName) {
             this.cityName = cityName;
             return this;
-        }
-
-        public String getCityName() {
-            return cityName;
-        }
-
-        public Country getCountry() {
-            return country;
         }
 
         public CityBuilder setCountry(Country country) {
