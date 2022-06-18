@@ -10,6 +10,7 @@ import za.ac.cput.Domain.Entities.Address;
 import za.ac.cput.Domain.Entities.City;
 import za.ac.cput.Service.Impl.AddressServiceImpl;
 import za.ac.cput.Service.Impl.CityServiceImpl;
+import za.ac.cput.Service.Impl.FacadeService;
 
 import java.util.List;
 import java.util.Optional;
@@ -58,7 +59,7 @@ public class CityController {
         //This is a method that is static and can be called from within the CityServiceImpl class.
         //The method returns a list of only city objects. It is almost exactly the same as the read method but is static.
 
-        List<City> c = this.service.getCitiesByCountryId(countryId);
+        List<City> c = FacadeService.getCitiesByCountryId(countryId);
         return ResponseEntity.ok(c);
      }
 }

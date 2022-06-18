@@ -2,11 +2,16 @@ package za.ac.cput.Service.Impl;
 
 import org.springframework.stereotype.Service;
 import za.ac.cput.Domain.Entities.Country;
+import za.ac.cput.Domain.Entities.Employee;
+import za.ac.cput.Domain.Entities.Lookup.EmployeeAddress;
 import za.ac.cput.Domain.Entities.Student;
+import za.ac.cput.Domain.Entities.StudentAddress;
+import za.ac.cput.Repository.Interface.StudentAddressRepository;
 import za.ac.cput.Repository.Interface.StudentRepository;
 import za.ac.cput.Service.Interface.StudentService;
 
 import java.lang.annotation.Annotation;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +28,7 @@ public class StudentServiceImpl implements StudentService {
     private static StudentRepository studentRepository;
     private List<Student> studentList;
     private static StudentService service;
+    private StudentAddressRepository studentAddressRepository;
 
     public StudentServiceImpl(){//StudentRepository studentRepository) {
         this.studentRepository = StudentServiceImpl.studentRepository;
@@ -61,6 +67,17 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> studentLastNameByCountryId(String countryId){
+        List<StudentAddress> studAddr = this.studentAddressRepository.readAll();
+        List<Student> newStud = this.studentRepository.readAll();
+        //studentList
+        for(StudentAddress stud : studAddr){
+            if(stud.getAddress().getCity().getCountry().getCountryID().equals(countryId)){
+                if(newStud.contains(stud)) {
+                    return newStud.stream().findAny().stream().toList();
+                }
+            }
+        }
+
         return studentList;
     }
 

@@ -10,6 +10,7 @@ import za.ac.cput.Domain.Entities.Address;
 import za.ac.cput.Domain.Entities.Employee;
 import za.ac.cput.Service.Impl.AddressServiceImpl;
 import za.ac.cput.Service.Impl.EmployeeServiceImpl;
+import za.ac.cput.Service.Impl.FacadeService;
 
 import java.util.List;
 import java.util.Optional;
@@ -61,7 +62,7 @@ public class EmployeeController {
 
     @GetMapping("getEmployeeNameByEmail/{employeeEmail}")
     public ResponseEntity<String> getEmployeeNameByEmail(@PathVariable String employeeEmail){
-        String name = this.service.getEmployeeNameByEmail(employeeEmail);
+        String name = FacadeService.getEmployeeNameByEmail(employeeEmail);
         return ResponseEntity.ok(name);
     }
 
