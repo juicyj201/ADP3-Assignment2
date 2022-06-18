@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class EmployeeServiceImplTest {
     private EmployeeRepository repo;
-    private EmployeeServiceImpl service = new EmployeeServiceImpl(repo);
+    private EmployeeServiceImpl service = new EmployeeServiceImpl();
     private Employee emp;
     private EmployeeService empService;
 
