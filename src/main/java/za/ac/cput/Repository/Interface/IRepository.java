@@ -4,6 +4,7 @@ import org.springframework.data.repository.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Joshua Julies
@@ -13,8 +14,8 @@ import java.util.List;
  **/
 
 public interface IRepository<T, ID>{
-    T create(T t);
-    T read(ID id);
-    T update(T t);
+    T save(T t);
+    Optional<T> read(ID id);
+    List<T> readAll();
     void delete(ID id);
 }

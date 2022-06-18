@@ -2,9 +2,8 @@ package za.ac.cput.Service.Impl;
 
 import org.springframework.stereotype.Service;
 import za.ac.cput.Domain.Entities.Address;
-import za.ac.cput.Repository.Impl.AddressRepositoryImpl;
+import za.ac.cput.Repository.Interface.Impl.AddressRepositoryImpl;
 import za.ac.cput.Repository.Interface.AddressRepository;
-import za.ac.cput.Repository.Interface.EmployeeRepository;
 import za.ac.cput.Service.Interface.AddressService;
 
 import java.lang.annotation.Annotation;
@@ -47,7 +46,7 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public void delete(Address address) {
-        this.repo.delete(address);
+        this.repo.delete(address.getCompositeId());
     }
 
     @Override

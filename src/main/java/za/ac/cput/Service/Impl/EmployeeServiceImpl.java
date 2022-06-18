@@ -30,22 +30,22 @@ public class EmployeeServiceImpl implements EmployeeService
 
     @Override
     public Optional<Employee> read(Employee employee) {
-        return this.empRepo.findById(employee.getStaffId());
+        return this.empRepo.read(employee.getStaffId());
     }
 
     @Override
     public void delete(Employee employee) {
-        this.empRepo.delete(employee);
+        this.empRepo.delete(employee.getStaffId());
     }
 
     @Override
     public List<Employee> readAll() {
-        return this.empRepo.findAll();
+        return this.empRepo.readAll();
     }
 
     @Override
     public String getEmployeeNameByEmail(String employeeEmail) {
-        List<Employee> empName = this.empRepo.findAll();
+        List<Employee> empName = this.empRepo.readAll();
         for(Employee name : empName){
             if(name.getEmail().equals(employeeEmail)){
                 return name.getName().toString();

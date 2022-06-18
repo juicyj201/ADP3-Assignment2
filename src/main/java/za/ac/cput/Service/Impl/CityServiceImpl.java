@@ -1,6 +1,5 @@
 package za.ac.cput.Service.Impl;
 
-import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import za.ac.cput.Domain.Entities.City;
 import za.ac.cput.Domain.Entities.Country;
@@ -38,12 +37,13 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public City save(City city) {
-        return this.cityRepository.create(city);
+        return this.cityRepository.save(city);
     }
 
     @Override
     public Optional<City> read(City city) {
-        return Optional.ofNullable(this.cityRepository.read(city.getCityID()));
+        //return Optional.ofNullable(this.cityRepository.read(city.getCityID()));
+        return Optional.ofNullable(this.cityRepository.read(city.getCityID()).get());
     }
 
     @Override

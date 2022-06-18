@@ -2,11 +2,8 @@ package za.ac.cput.Service.Impl;
 
 import org.springframework.stereotype.Service;
 import za.ac.cput.Domain.Entities.Lookup.EmployeeAddress;
-import za.ac.cput.Repository.Impl.AddressRepositoryImpl;
-import za.ac.cput.Repository.Impl.EmployeeAddressRepositoryImpl;
-import za.ac.cput.Repository.Interface.AddressRepository;
+import za.ac.cput.Repository.Interface.Impl.EmployeeAddressRepositoryImpl;
 import za.ac.cput.Repository.Interface.EmployeeAddressRepository;
-import za.ac.cput.Service.Interface.AddressService;
 import za.ac.cput.Service.Interface.EmployeeAddressService;
 
 import java.lang.annotation.Annotation;
@@ -50,7 +47,7 @@ public class EmployeeAddressServiceImpl implements EmployeeAddressService {
 
     @Override
     public void delete(EmployeeAddress employeeAddress) {
-        this.repo.delete(employeeAddress);
+        this.repo.delete(employeeAddress.getStaffId());
     }
 
     @Override

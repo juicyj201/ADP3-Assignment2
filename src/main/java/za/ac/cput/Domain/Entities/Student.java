@@ -3,7 +3,7 @@ package za.ac.cput.Domain.Entities;
  *
  * Keziah Robinson
  * 219113149
- * Student Entity
+ * StudentRepositoryImpl Entity
  *
  */
 public class Student {
@@ -32,9 +32,13 @@ public class Student {
         return address;
     }
 
+    public String getStudentID() {
+        return studentID;
+    }
+
     @Override
     public String toString() {
-        return "Student{" +
+        return "StudentRepositoryImpl{" +
                 "studentID='" + studentID + '\'' +
                 ", email='" + email + '\'' +
                 ", address=" + address +

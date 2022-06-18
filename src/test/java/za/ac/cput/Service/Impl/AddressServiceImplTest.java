@@ -5,9 +5,6 @@ import org.junit.jupiter.api.Test;
 import za.ac.cput.Domain.Entities.Address;
 import za.ac.cput.Domain.Entities.City;
 import za.ac.cput.Factory.AddressFactory;
-import za.ac.cput.Repository.Impl.AddressRepositoryImpl;
-import za.ac.cput.Repository.Interface.AddressRepository;
-import za.ac.cput.Service.Interface.AddressService;
 
 
 /**

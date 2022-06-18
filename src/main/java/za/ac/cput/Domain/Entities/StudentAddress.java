@@ -27,6 +27,10 @@ public class StudentAddress {
         return address;
     }
 
+    public String getStudentID() {
+        return studentID;
+    }
+
     @Override
     public String toString() {
         return "StudentAddress{" +
