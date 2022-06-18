@@ -1,8 +1,6 @@
 package za.ac.cput.Service.Interface;
 
 import za.ac.cput.Domain.Entities.Employee;
-import za.ac.cput.Domain.Entities.Name;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -28,4 +26,6 @@ public interface EmployeeService extends IService<Employee>
 
     public String getEmployeeNameByEmail(String employeeEmail);
     List<Employee> getAll();
+
+    public String getEmployeeNameByCity(String cityId);
 }

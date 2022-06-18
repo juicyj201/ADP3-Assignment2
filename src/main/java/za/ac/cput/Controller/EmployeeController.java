@@ -68,9 +68,9 @@ public class EmployeeController {
         //The method returns a list of employee names, instead of employee objects. It is almost
         //exactly the same as the read but is static.
 
-        //List<String> empNames = EmployeeServiceImpl.getEmployeeNameByCity(cityId);
+         // List<String> empNames = EmployeeServiceImpl.getEmployeeNameByCity(cityId);
         //return ResponseEntity.ok(empNames);
-         return null;
+        return null;
      }
 
 }
