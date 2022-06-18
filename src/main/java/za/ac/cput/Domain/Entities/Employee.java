@@ -85,6 +85,15 @@ public class Employee
             return this;
         }
 
+        public EmployeeBuilder copy(Employee employee)
+        {
+            this.staffId = employee.staffId;
+            this.email = employee.email;
+            this.name = employee.name;
+
+            return this;
+        }
+
         public Employee build()
         {
             if (this.staffId.equals(null)) {
