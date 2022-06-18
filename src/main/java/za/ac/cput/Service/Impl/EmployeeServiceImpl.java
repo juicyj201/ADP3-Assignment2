@@ -2,9 +2,10 @@ package za.ac.cput.Service.Impl;
 
 
 import za.ac.cput.Domain.Entities.Employee;
-import za.ac.cput.Domain.Entities.Name;
+import za.ac.cput.Repository.Impl.EmployeeRepositoryImpl;
 import za.ac.cput.Repository.Interface.EmployeeRepository;
 import za.ac.cput.Service.Interface.EmployeeService;
+
 import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.Optional;
@@ -12,12 +13,24 @@ import java.util.Optional;
 /**
  * Matthew Jones
  * 220077681
- * Question 4
+ * Question 4, 5 & 6
  */
 
 public class EmployeeServiceImpl implements EmployeeService
 {
-    private static EmployeeRepository empRepo;
+    private final EmployeeRepository empRepo;
+    private static EmployeeService empService;
+
+    public EmployeeServiceImpl(){
+        this.empRepo = EmployeeRepositoryImpl.getEmployeeRepository();
+    }
+
+    public static EmployeeService getService()
+    {
+        if (empService == null)
+            empService = new EmployeeServiceImpl();
+        return empService;
+    }
 
     public EmployeeServiceImpl(EmployeeRepository empRepo){
         this.empRepo = empRepo;
@@ -25,12 +38,12 @@ public class EmployeeServiceImpl implements EmployeeService
 
     @Override
     public Employee save(Employee employee) {
-        return this.empRepo.save(employee);
+        return this.empRepo.create(employee);
     }
 
     @Override
     public Optional<Employee> read(Employee employee) {
-        return this.empRepo.read(employee.getStaffId());
+        return Optional.ofNullable(this.empRepo.read(employee.getStaffId()));
     }
 
     @Override
@@ -40,12 +53,12 @@ public class EmployeeServiceImpl implements EmployeeService
 
     @Override
     public List<Employee> readAll() {
-        return this.empRepo.readAll();
+        return this.empRepo.getAll();
     }
 
     @Override
     public String getEmployeeNameByEmail(String employeeEmail) {
-        List<Employee> empName = this.empRepo.readAll();
+        List<Employee> empName = this.empRepo.getAll();
         for(Employee name : empName){
             if(name.getEmail().equals(employeeEmail)){
                 return name.getName().toString();
@@ -57,6 +70,19 @@ public class EmployeeServiceImpl implements EmployeeService
 
     @Override
     public List<Employee> getAll() {
+        return null;
+    }
+
+    @Override
+    public String getEmployeeNameByCity(String cityId) {
+        List<Employee> empName = this.empRepo.getAll();
+        for (Employee name : empName)
+        {
+            if (name.getName().equals(cityId))
+            {
+                return name.getName().toString();
+            }
+        }
         return null;
     }
 

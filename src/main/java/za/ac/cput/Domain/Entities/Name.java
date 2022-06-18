@@ -121,6 +121,15 @@ public class Name
             return this;
         }
 
+        public NameBuilder copy(Name name)
+        {
+            this.firstName = name.firstName;
+            this.middleName = name.middleName;
+            this.lastName = name.lastName;
+
+            return this;
+        }
+
         public Name build()
         {
             if (this.firstName.equals(null)) {
