@@ -2,9 +2,9 @@ Question 10
 -----------
 
 Team members:
- Matthew Jones - 220077681
- Delron Chad Claassen - 219360561
- Keziah Robinson - 219113149
+ Matthew Jones - 220077681\n
+ Delron Chad Claassen - 219360561\n
+ Keziah Robinson - 219113149\n
  Joshua Julies - 220102473
  
 Possible improvements
