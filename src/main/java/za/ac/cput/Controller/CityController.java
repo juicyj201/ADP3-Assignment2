@@ -54,11 +54,11 @@ public class CityController {
     }
 
      @GetMapping("getCities/{countryId}")
-     public ResponseEntity<City> getCitiesByCountry(@PathVariable String countryId){
+     public ResponseEntity<List<City>> getCitiesByCountry(@PathVariable String countryId){
         //This is a method that is static and can be called from within the CityServiceImpl class.
         //The method returns a list of only city objects. It is almost exactly the same as the read method but is static.
 
-        City c = this.service.getCitiesByCountryId(countryId);
+        List<City> c = this.service.getCitiesByCountryId(countryId);
         return ResponseEntity.ok(c);
      }
 }

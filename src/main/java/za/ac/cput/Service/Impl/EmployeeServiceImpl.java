@@ -1,6 +1,8 @@
 package za.ac.cput.Service.Impl;
 
 
+import org.springframework.stereotype.Service;
+import za.ac.cput.Domain.Entities.City;
 import za.ac.cput.Domain.Entities.Employee;
 import za.ac.cput.Domain.Entities.Lookup.EmployeeAddress;
 import za.ac.cput.Domain.Entities.Name;
@@ -18,9 +20,12 @@ import java.util.Optional;
  * Question 4
  */
 
+
+@Service
 public class EmployeeServiceImpl implements EmployeeService
 {
     private final EmployeeRepository empRepo;
+    private EmployeeAddressRepository empAddRepo;
     private static EmployeeService service;
 
     public EmployeeServiceImpl(){
@@ -68,6 +73,19 @@ public class EmployeeServiceImpl implements EmployeeService
 
     @Override
     public List<Employee> getAll() {
+        return null;
+    }
+
+    @Override
+    public String getEmployeeNameByCity(String cityId) {
+        List<EmployeeAddress> empAddName = this.empAddRepo.readAll();
+        List<Employee> emp = this.empRepo.readAll();
+        for(EmployeeAddress addr : empAddName){
+            if(addr.getAddress().getCity().getCityID().equals(cityId)){
+                String empId = addr.getStaffId();
+                return this.empRepo.read(empId).toString();
+            }
+        }
         return null;
     }
 

@@ -58,10 +58,21 @@ public class CityServiceImpl implements CityService {
 
     //Question 5
     @Override
-    public City getCitiesByCountryId(String countryID) {
+    public List<City> getCitiesByCountryId(String countryID) {
+        /**
         List<City> cities = readAll();
         for (City city : cities) {
-            if(city.getCountry().getCountryID().equalsIgnoreCase(countryID)) return city;
+            if(city.getCountry().getCountryID().equalsIgnoreCase(countryID)) {
+                return cities.stream().allMatch(c -> c.getCountry().getCountryID().equals(countryID));
+            }
+        }
+        return null;
+         **/
+        List<City> cities = readAll();
+        for (City city : cities) {
+            if(cities.stream().allMatch(c -> c.getCountry().getCountryID().equals(countryID))) {
+                return cities.stream().toList();
+            }
         }
         return null;
     }

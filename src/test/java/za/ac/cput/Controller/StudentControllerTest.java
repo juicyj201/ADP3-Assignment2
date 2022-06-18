@@ -17,6 +17,14 @@ import za.ac.cput.Service.Interface.StudentService;
 
 import java.util.Optional;
 
+/**
+ *
+ * Keziah Robinson
+ * 219113149
+ * Student Controller Test
+ *
+ */
+
 public class StudentControllerTest {
     private Student student = StudentFactory.createStudent("01", "stud@mail.com", new Name.NameBuilder().setFirstName("stud").setMiddleName("stud").setLastName("stud").build());
     private StudentService service = StudentServiceImpl.getService();
@@ -50,7 +58,11 @@ public class StudentControllerTest {
         }else{
             throw new NullPointerException("It does not work");
         }
-        //Assertions.assertNull(this.service.read(addr),"This object does not exist");
+    }
+
+    @Test
+    public void testGetCities(){
+        Assertions.assertNotNull(this.service.studentLastNameByCountryId("01"));
     }
 
 }

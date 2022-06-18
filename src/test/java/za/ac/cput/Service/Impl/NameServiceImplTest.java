@@ -5,11 +5,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.Domain.Entities.Name;
 import za.ac.cput.Factory.NameFactory;
+import za.ac.cput.Repository.Interface.Impl.NameRepositoryImpl;
+import za.ac.cput.Repository.Interface.NameRepository;
 import za.ac.cput.Service.Interface.NameService;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Matthew Jones
+ * 220077681
+ * Question 4
+ */
 
 class NameServiceImplTest {
 
@@ -18,7 +26,7 @@ class NameServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        nameService = NameServiceImpl.getService();
+        nameService = new NameServiceImpl(new NameRepositoryImpl());
         name = NameFactory.createName("Jack", "Danny", "Daniels");
     }
 

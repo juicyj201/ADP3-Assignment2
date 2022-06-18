@@ -15,6 +15,12 @@ import za.ac.cput.Service.Impl.EmployeeServiceImpl;
 import za.ac.cput.Service.Interface.EmployeeAddressService;
 import za.ac.cput.Service.Interface.EmployeeService;
 
+/**
+ * Matthew Jones
+ * 220077681
+ * Question 9
+ */
+
 public class EmployeeControllerTest {
     private Employee empaddr = EmployeeFactory.createEmployee("01", "01@mail.com", new Name.NameBuilder().setFirstName("Jeff").build());
     private EmployeeService service = EmployeeServiceImpl.getService();
@@ -42,6 +48,10 @@ public class EmployeeControllerTest {
         }else{
             throw new NullPointerException("It does not work");
         }
-        //Assertions.assertNull(this.service.read(addr),"This object does not exist");
+    }
+
+    @Test
+    public void testGetCities(){
+        Assertions.assertNotNull(this.service.getEmployeeNameByEmail("01@mail.com"));
     }
 }

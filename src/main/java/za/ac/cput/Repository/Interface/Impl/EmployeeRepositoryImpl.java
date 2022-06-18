@@ -1,5 +1,6 @@
 package za.ac.cput.Repository.Interface.Impl;
 
+import org.springframework.stereotype.Repository;
 import za.ac.cput.Domain.Entities.Employee;
 import za.ac.cput.Domain.Entities.Lookup.EmployeeAddress;
 import za.ac.cput.Repository.Interface.EmployeeAddressRepository;
@@ -9,6 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
+/**
+ * Matthew Jones
+ * 220077681
+ * Question 3
+ */
+
+@Repository
 public class EmployeeRepositoryImpl implements EmployeeRepository {
     private List<Employee> employeeList;
     private static EmployeeRepository repo;

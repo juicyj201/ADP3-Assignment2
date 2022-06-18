@@ -1,5 +1,6 @@
 package za.ac.cput.Service.Impl;
 
+import org.springframework.stereotype.Service;
 import za.ac.cput.Domain.Entities.Country;
 import za.ac.cput.Domain.Entities.Student;
 import za.ac.cput.Repository.Interface.StudentRepository;
@@ -17,6 +18,7 @@ import java.util.Optional;
  *
  */
 
+@Service
 public class StudentServiceImpl implements StudentService {
     private static StudentRepository studentRepository;
     private List<Student> studentList;

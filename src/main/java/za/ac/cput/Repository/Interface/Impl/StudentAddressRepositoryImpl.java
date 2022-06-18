@@ -1,5 +1,6 @@
 package za.ac.cput.Repository.Interface.Impl;
 
+import org.springframework.stereotype.Repository;
 import za.ac.cput.Domain.Entities.StudentAddress;
 import za.ac.cput.Repository.Interface.StudentAddressRepository;
 
@@ -15,6 +16,7 @@ import java.util.Optional;
  *
  */
 
+@Repository
 public class StudentAddressRepositoryImpl implements StudentAddressRepository {
     private List<StudentAddress> studentAddressList;
     private static StudentAddressRepository repo;

@@ -41,6 +41,10 @@ public class EmployeeAddressControllerTest {
         }else{
             throw new NullPointerException("It does not work");
         }
-        //Assertions.assertNull(this.service.read(addr),"This object does not exist");
+    }
+
+    @Test
+    public void testGetCities(){
+        Assertions.assertNotNull(this.service.getEmployeeNameByCity("01"));
     }
 }

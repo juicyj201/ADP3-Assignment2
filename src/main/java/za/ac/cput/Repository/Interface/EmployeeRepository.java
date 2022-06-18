@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import za.ac.cput.Domain.Entities.Employee;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Matthew Jones
@@ -15,16 +16,13 @@ import java.util.List;
 @Repository
 public interface EmployeeRepository extends IRepository<Employee, String> {
     @Override
-    Employee create(Employee employee);
+    Employee save(Employee employee);
 
     @Override
-    Employee read(String s);
-
-    @Override
-    Employee update(Employee employee);
+    Optional<Employee> read(String s);
 
     @Override
     void delete(String s);
 
-    List<Employee> getAll();
+    List<Employee> readAll();
 }
