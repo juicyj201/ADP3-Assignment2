@@ -2,7 +2,9 @@ package za.ac.cput.Service.Impl;
 
 
 import za.ac.cput.Domain.Entities.Employee;
+import za.ac.cput.Domain.Entities.Lookup.EmployeeAddress;
 import za.ac.cput.Domain.Entities.Name;
+import za.ac.cput.Repository.Interface.EmployeeAddressRepository;
 import za.ac.cput.Repository.Interface.EmployeeRepository;
 import za.ac.cput.Service.Interface.EmployeeService;
 import java.lang.annotation.Annotation;
@@ -53,7 +55,6 @@ public class EmployeeServiceImpl implements EmployeeService
         }
         return null;
     }
-
 
     @Override
     public List<Employee> getAll() {

@@ -1,16 +1,22 @@
 package za.ac.cput.Controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import za.ac.cput.Repository.Interface.Impl.StudentRepositoryImpl;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("school-management/student")
 public class StudentController {
-    /**private final StudentServiceImpl service;
+     /**
+    private final StudentServiceImpl service;
 
      @Autowired
      public StudentController(StudentServiceImpl service){
-     this.service = service;
+          this.service = service;
      }
 
      @PostMapping("save")
@@ -48,9 +54,8 @@ public class StudentController {
         //The method returns a list of student last names, instead of student objects. It is almost
         //exactly the same as the read but is static.
 
-        List<String> studNames = StudentServiceImpl.getStudentLastNameByCountryId(countryId);
+        List<String> studNames = this.service.getStudentLastNameByCountryId(countryId);
           return ResponseEntity.ok(studNames);
      }
-
      **/
 }

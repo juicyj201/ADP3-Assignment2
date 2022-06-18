@@ -1,9 +1,14 @@
 package za.ac.cput.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import za.ac.cput.Domain.Entities.Address;
+import za.ac.cput.Domain.Entities.City;
 import za.ac.cput.Service.Impl.AddressServiceImpl;
+import za.ac.cput.Service.Impl.CityServiceImpl;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +16,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("school-management/city")
 public class CityController {
-    /**private final CityServiceImpl service;
+    private final CityServiceImpl service;
 
     @Autowired
     public CityController(CityServiceImpl service){
@@ -19,7 +24,7 @@ public class CityController {
     }
 
     @PostMapping("save")
-    private ResponseEntity<City></City> save(City city){
+    private ResponseEntity<City> save(City city){
     City save = service.save(city);
     return ResponseEntity.ok(save);
     }
@@ -48,13 +53,11 @@ public class CityController {
     }
 
      @GetMapping("getCities/{countryId}")
-     public List<City> getCitiesByCountry(@PathVariable String countryId){
+     public ResponseEntity<City> getCitiesByCountry(@PathVariable String countryId){
         //This is a method that is static and can be called from within the CityServiceImpl class.
         //The method returns a list of only city objects. It is almost exactly the same as the read method but is static.
 
-        List<City> cList = CityServiceImpl.getCitiesByCountryId(countryId);
-        return ResponseEntity.ok(clist);
+        City c = this.service.getCitiesByCountryId(countryId);
+        return ResponseEntity.ok(c);
      }
-
-    **/
 }

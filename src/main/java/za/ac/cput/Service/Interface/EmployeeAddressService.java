@@ -18,4 +18,5 @@ public interface EmployeeAddressService extends IService<EmployeeAddress>{
     public Optional<EmployeeAddress> read(EmployeeAddress employeeAddress);
     public void delete(EmployeeAddress employeeAddress);
     public List<EmployeeAddress> readAll();
+    public String getEmployeeNameByCity(String cityId);
 }
