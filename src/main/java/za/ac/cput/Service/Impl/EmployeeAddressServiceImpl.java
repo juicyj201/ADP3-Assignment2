@@ -26,7 +26,7 @@ public class EmployeeAddressServiceImpl implements EmployeeAddressService {
     private final EmployeeAddressRepository repo;
     private static EmployeeAddressService service;
     private final EmployeeRepository emprepo = EmployeeRepositoryImpl.getEmployeeRepository();
-    private EmployeeService empserv = new EmployeeServiceImpl(emprepo);
+    private EmployeeService empserv = new EmployeeServiceImpl();
 
     public EmployeeAddressServiceImpl(){
         this.repo = EmployeeAddressRepositoryImpl.getEmployeeAddressRepository();

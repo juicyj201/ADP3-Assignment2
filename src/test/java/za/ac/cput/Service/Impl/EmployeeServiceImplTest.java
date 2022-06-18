@@ -13,7 +13,7 @@ import javax.persistence.MapKeyColumn;
 
 public class EmployeeServiceImplTest {
     private EmployeeRepository repo;
-    private EmployeeServiceImpl service = new EmployeeServiceImpl(repo);
+    private EmployeeServiceImpl service = new EmployeeServiceImpl();
 
     @Test
     public void testGetEmployeeNameByEmail() {

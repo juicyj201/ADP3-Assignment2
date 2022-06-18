@@ -18,11 +18,20 @@ import java.util.Optional;
  */
 
 public class StudentServiceImpl implements StudentService {
-
     private static StudentRepository studentRepository;
     private List<Student> studentList;
-    public StudentServiceImpl(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
+    private static StudentService service;
+
+    public StudentServiceImpl(){//StudentRepository studentRepository) {
+        this.studentRepository = StudentServiceImpl.studentRepository;
+    }
+
+    public static StudentService getService(){
+        if(service == null){
+            service = new StudentServiceImpl();
+        }
+
+        return service;
     }
 
     @Override
