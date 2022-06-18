@@ -25,7 +25,6 @@ public class StudentFactory {
             return new Student.StudentBuilder()
                     .setStudentID(studentID)
                     .setEmail(email)
-                    .setAddress(address)
                     .builder();
         }
     }
