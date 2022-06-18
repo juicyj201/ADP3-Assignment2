@@ -13,7 +13,7 @@ import za.ac.cput.Domain.Entities.StudentAddress;
 import za.ac.cput.util.helper;
 
 public class StudentAddressFactory {
-    public static StudentAddress createStudentAccount(String studentID, Address address) {
+    public static StudentAddress createStudentAddress(String studentID, Address address) {
 
         if (!helper.isNullorEmpty(studentID))
             return null;
