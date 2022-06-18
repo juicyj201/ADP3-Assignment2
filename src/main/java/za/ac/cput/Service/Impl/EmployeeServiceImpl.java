@@ -6,6 +6,7 @@ import za.ac.cput.Domain.Entities.Lookup.EmployeeAddress;
 import za.ac.cput.Domain.Entities.Name;
 import za.ac.cput.Repository.Interface.EmployeeAddressRepository;
 import za.ac.cput.Repository.Interface.EmployeeRepository;
+import za.ac.cput.Repository.Interface.Impl.EmployeeRepositoryImpl;
 import za.ac.cput.Service.Interface.EmployeeService;
 import java.lang.annotation.Annotation;
 import java.util.List;
@@ -19,10 +20,19 @@ import java.util.Optional;
 
 public class EmployeeServiceImpl implements EmployeeService
 {
-    private static EmployeeRepository empRepo;
+    private final EmployeeRepository empRepo;
+    private static EmployeeService service;
 
-    public EmployeeServiceImpl(EmployeeRepository empRepo){
-        this.empRepo = empRepo;
+    public EmployeeServiceImpl(){
+        this.empRepo = EmployeeRepositoryImpl.getEmployeeRepository();
+    }
+
+    public static EmployeeService getService(){
+        if(service == null){
+            service = new EmployeeServiceImpl();
+        }
+
+        return service;
     }
 
     @Override

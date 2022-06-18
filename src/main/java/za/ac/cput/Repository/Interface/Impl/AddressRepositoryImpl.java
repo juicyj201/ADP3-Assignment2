@@ -50,7 +50,12 @@ public class AddressRepositoryImpl implements AddressRepository {
     }
 
     @Override
-    public void delete(String id) {
-        addressList.remove(id);
+    public void delete(String s) {
+        this.addressList.remove(s);
+    }
+
+    @Override
+    public void delete(Address address) {
+        this.addressList.remove(address);
     }
 }

@@ -46,7 +46,7 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public void delete(Address address) {
-        this.repo.delete(address.getCompositeId());
+        this.repo.delete(address);
     }
 
     @Override

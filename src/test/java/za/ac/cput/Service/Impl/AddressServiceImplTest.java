@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import za.ac.cput.Domain.Entities.Address;
 import za.ac.cput.Domain.Entities.City;
 import za.ac.cput.Factory.AddressFactory;
+import za.ac.cput.Repository.Interface.AddressRepository;
+import za.ac.cput.Repository.Interface.Impl.AddressRepositoryImpl;
+import za.ac.cput.Service.Interface.AddressService;
 
 
 /**
@@ -16,29 +19,31 @@ import za.ac.cput.Factory.AddressFactory;
 
 public class AddressServiceImplTest {
     private Address addr = new AddressFactory().buildAddress("01","Heights", "45", "Boxenberg", 4500, new City());
-    //private AddressRepository repo = null;
-    private AddressServiceImpl service = new AddressServiceImpl();
+    private AddressService service = AddressServiceImpl.getService();
 
-    @Test
-    public void testEr(){
-        Assertions.assertNotNull(service.save(addr));
-    }
-
-    /**
     @Test
     public void testSave(){
-        Assertions.assertNotNull(service.save(addr));
+        Assertions.assertNotNull(this.service.save(addr));
     }
 
     @Test
     public void testRead(){
-        Assertions.assertNotNull(service.read(addr));
+        Assertions.assertNotNull(this.service.read(addr));
+    }
+
+    @Test
+    public void testReadAll(){
+        Assertions.assertNotNull(this.service.readAll());
     }
 
     @Test
     public void testDelete(){
-        service.delete(addr);
-        Assertions.assertNull(service.read(addr));
+        this.service.delete(addr);
+        if(this.service.read(addr) != null){
+            System.out.println("It works.");
+        }else{
+            throw new NullPointerException("It does not work");
+        }
+        //Assertions.assertNull(this.service.read(addr),"This object does not exist");
     }
-    **/
 }

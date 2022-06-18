@@ -25,6 +25,5 @@ public class SchoolManagementApplication
     {
         System.out.println( "Hello World!" );
         SpringApplication.run(SchoolManagementApplication.class, args);
-
     }
 }

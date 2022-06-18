@@ -4,6 +4,7 @@ import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import za.ac.cput.Domain.Entities.Address;
@@ -12,7 +13,7 @@ import za.ac.cput.Service.Impl.AddressServiceImpl;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("school-management/address/")
 public class AddressController {
     private final AddressServiceImpl service;

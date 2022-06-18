@@ -1,27 +1,21 @@
-package za.ac.cput.Service.Impl;
+package za.ac.cput.Controller;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Domain.Entities.Address;
 import za.ac.cput.Domain.Entities.City;
 import za.ac.cput.Domain.Entities.Lookup.EmployeeAddress;
+import za.ac.cput.Domain.Entities.Student;
 import za.ac.cput.Factory.AddressFactory;
 import za.ac.cput.Factory.Lookup.EmployeeAddressFactory;
-import za.ac.cput.Repository.Interface.AddressRepository;
-import za.ac.cput.Repository.Interface.EmployeeAddressRepository;
-import za.ac.cput.Service.Interface.AddressService;
+import za.ac.cput.Factory.StudentFactory;
+import za.ac.cput.Service.Impl.EmployeeAddressServiceImpl;
+import za.ac.cput.Service.Impl.StudentAddressServiceImpl;
 import za.ac.cput.Service.Interface.EmployeeAddressService;
+import za.ac.cput.Service.Interface.StudentService;
 
-/**
- * Joshua Julies
- * 220102473
- * ----------
- * Question 4
- */
-
-public class EmployeeAddressServiceImplTest {
-    private EmployeeAddress empaddr = new EmployeeAddressFactory().buildEmployeeAddress("01", new Address.AddressBuilder().createUnitNumber("01").createComplexName("Heights").createStreetNumber("45").createStreetName("Boxenberg").createPostalCode(4500).createCity(new City()).build());//("01","Heights", "45", "Boxenberg", 4500, new City());
-    private EmployeeAddressService service = EmployeeAddressServiceImpl.getService();
+public class StudentControllerTest {
+    //private Student student = StudentFactory.createStudent("01", "stud@mail.com", new AddressFactory().buildAddress("01","Heights", "45", "Boxenberg", 4500, new City()))
+    /**private StudentService service = StudentServiceImpl.
 
     @Test
     public void testSave(){
@@ -48,4 +42,5 @@ public class EmployeeAddressServiceImplTest {
         }
         //Assertions.assertNull(this.service.read(addr),"This object does not exist");
     }
+    **/
 }
