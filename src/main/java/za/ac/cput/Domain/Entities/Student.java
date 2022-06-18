@@ -1,20 +1,25 @@
 package za.ac.cput.Domain.Entities;
+
+import javax.persistence.Embedded;
+
 /**
  *
  * Keziah Robinson
  * 219113149
- * StudentRepositoryImpl Entity
+ * Student Entity
  *
  */
 public class Student {
     private String studentID;
     private String email;
-    private Address address;
+
+    @Embedded
+    private Name name;
 
     private Student(StudentBuilder builder){
         this.studentID = builder.studentID;
         this.email = builder.email;
-        this.address = builder.address;
+        this.name = builder.name;
     }
 
     public String setStudentID(String studentID) {
@@ -27,12 +32,15 @@ public class Student {
         return email;
     }
 
-    public Address setAddress(Address address) {
-        this.address = address;
-        return address;
+    public Name setName(Name name) {
+        this.name = name;
+        return name;
     }
 
     public String getStudentID() {
+        return studentID;
+    }
+    public String getName() {
         return studentID;
     }
 
@@ -41,7 +49,7 @@ public class Student {
         return "StudentRepositoryImpl{" +
                 "studentID='" + studentID + '\'' +
                 ", email='" + email + '\'' +
-                ", address=" + address +
+                ", name=" + name +
                 '}';
     }
 
@@ -49,31 +57,31 @@ public class Student {
    public static class StudentBuilder {
        private String studentID;
        private String email;
-       private Address address;
+       private Name name;
        public StudentBuilder setStudentID(String studentID) {
            this.studentID = studentID;
            return this;
        }
 
        public StudentBuilder(){
-           if (address.equals(null)) {
+           if (name.equals(null)) {
                throw new IllegalArgumentException("Address cannot be null");}
-               this.address = address;}
+               this.name = name;}
 
        public StudentBuilder setEmail(String email) {
            this.email = email;
            return this;
        }
 
-       public StudentBuilder setAddress(Address address) {
-           this.address = address;
+       public StudentBuilder setName(Name name) {
+           this.name = name;
            return this;
        }
 
        public Student copy(Student student){
            this.studentID = student.studentID;
            this.email = student.email;
-           this.address = student.address;
+           this.name = student.name;
            return student;
        }
 

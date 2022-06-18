@@ -1,52 +1,54 @@
 package za.ac.cput.Service.Impl;
 
-import za.ac.cput.Domain.Entities.Student;
 import za.ac.cput.Domain.Entities.StudentAddress;
-import za.ac.cput.Repository.Interface.Impl.StudentAddressRepositoryImpl;
-import za.ac.cput.Repository.Interface.Impl.StudentRepositoryImpl;
 import za.ac.cput.Repository.Interface.StudentAddressRepository;
-import za.ac.cput.Repository.Interface.StudentRepository;
 import za.ac.cput.Service.Interface.StudentAddressService;
-import za.ac.cput.Service.Interface.StudentService;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ *
+ * Keziah Robinson
+ * 219113149
+ * Student Address Service Implementation
+ *
+ */
+
 public class StudentAddressServiceImpl implements StudentAddressService {
-    private final StudentAddressRepository repo;
-    private static StudentAddressService service;
 
-    public StudentAddressServiceImpl(){
-        this.repo = StudentAddressRepositoryImpl.getStudentRepository();
+    public static StudentAddressRepository studentAddressRepo;
+    private static StudentAddressService s;
+    private List<StudentAddress> studentAddressList;
+
+
+    public StudentAddressServiceImpl(StudentAddressRepository studAddressRepo) {
+        this.studentAddressRepo = studAddressRepo;
     }
 
-    public static StudentAddressService getService(){
-        if(service == null){
-            service = new StudentAddressServiceImpl();
-        }
-
-        return service;
-    }
 
     @Override
     public StudentAddress save(StudentAddress studentAddress) {
-        return this.repo.save(studentAddress);
+        return this.studentAddressRepo.save(studentAddress);
     }
 
     @Override
     public Optional<StudentAddress> read(StudentAddress studentAddress) {
-        return this.repo.read(studentAddress.getStudentID());
+        return this.studentAddressList
+                .stream()
+                .filter(a -> a.getStudentID().equals(studentAddress))
+                .findFirst();
     }
 
     @Override
     public void delete(StudentAddress studentAddress) {
-        this.repo.delete(studentAddress.getStudentID());
+        this.studentAddressRepo.delete(studentAddress.getStudentID());
     }
 
     @Override
     public List<StudentAddress> readAll() {
-        return this.repo.readAll();
+        return this.studentAddressRepo.readAll();
     }
 
     @Override
@@ -56,6 +58,11 @@ public class StudentAddressServiceImpl implements StudentAddressService {
 
     @Override
     public Class<? extends Annotation> annotationType() {
+        return null;
+    }
+
+
+    public List<StudentAddress> get(StudentAddress studentAddress) {
         return null;
     }
 }
