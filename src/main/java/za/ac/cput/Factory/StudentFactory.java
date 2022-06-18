@@ -4,7 +4,7 @@ package za.ac.cput.Factory;
  *
  * Keziah Robinson
  * 219113149
- * Student Factory
+ * StudentRepositoryImpl Factory
  *
  */
 

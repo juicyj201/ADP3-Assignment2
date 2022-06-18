@@ -20,5 +20,5 @@ public interface AddressRepository extends IRepository<Address, String> {
     Address save(Address address);
     Optional<Address> read(String id);
     List<Address> readAll();
-    void delete(Address address);
+    void delete(String id);
 }

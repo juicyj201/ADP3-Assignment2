@@ -5,6 +5,7 @@ import za.ac.cput.Repository.Interface.CityRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /*
  *
@@ -34,18 +35,20 @@ public class CityRepositoryImpl implements CityRepository {
 
 
     @Override
-    public City create(City city) {
+    public City save(City city) {
         this.cities.add(city);
         return city;
     }
 
     @Override
-    public City read(String s) {
+    public Optional<City> read(String s) {
         return this.cities.stream()
                 .filter(c -> c.getCityID().equalsIgnoreCase(s))
-                .findAny().orElse(null);
+                .findFirst().or(null);
+        //.findAny().orElse(null);
     }
 
+    /**
     @Override
     public City update(City city) {
         City c = read(city.getCityID());
@@ -59,11 +62,16 @@ public class CityRepositoryImpl implements CityRepository {
         }
         return c;
     }
+     **/
 
     @Override
     public void delete(String s) {
-        City city = read(s);
+        Optional<City> city = read(s);
         this.cities.remove(city);
+    }
+
+    public List<City> readAll(){
+        return this.cities.stream().toList();
     }
 
     @Override

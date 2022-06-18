@@ -1,10 +1,12 @@
 package za.ac.cput.Repository.Interface.Impl;
 
+import za.ac.cput.Domain.Entities.City;
 import za.ac.cput.Domain.Entities.Country;
 import za.ac.cput.Repository.Interface.CountryRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /*
  *
@@ -34,18 +36,19 @@ public class CountryRepositoryImpl implements CountryRepository {
 
 
     @Override
-    public Country create(Country country) {
+    public Country save(Country country) {
         this.countries.add(country);
         return country;
     }
 
     @Override
-    public Country read(String s) {
+    public Optional<Country> read(String s) {
         return this.countries.stream()
                 .filter(c -> c.getCountryID().equalsIgnoreCase(s))
-                .findAny().orElse(null);
+                .findFirst().or(null);
     }
 
+    /**
     @Override
     public Country update(Country country) {
         Country c = read(country.getCountryID());
@@ -59,11 +62,16 @@ public class CountryRepositoryImpl implements CountryRepository {
         }
         return c;
     }
+     **/
 
     @Override
     public void delete(String s) {
-        Country country = read(s);
+        Optional<Country> country = read(s);
         this.countries.remove(country);
+    }
+
+    public List<Country> readAll(){
+        return this.countries.stream().toList();
     }
 
     @Override

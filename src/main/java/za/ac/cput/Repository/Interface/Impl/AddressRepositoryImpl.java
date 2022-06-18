@@ -1,9 +1,5 @@
-package za.ac.cput.Repository.Impl;
+package za.ac.cput.Repository.Interface.Impl;
 
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import za.ac.cput.Domain.Entities.Address;
 import za.ac.cput.Repository.Interface.AddressRepository;
 
@@ -33,7 +29,7 @@ public class AddressRepositoryImpl implements AddressRepository {
         Optional<Address> read = read(address.getCompositeId());
 
         if(read.isPresent()) {
-            delete(read.get());
+            delete(read.get().getCompositeId());
         }
 
         this.addressList.add(address);
@@ -54,7 +50,7 @@ public class AddressRepositoryImpl implements AddressRepository {
     }
 
     @Override
-    public void delete(Address address) {
-        addressList.remove(address);
+    public void delete(String id) {
+        addressList.remove(id);
     }
 }

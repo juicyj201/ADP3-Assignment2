@@ -35,12 +35,12 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public Country save(Country country) {
-        return this.countryRepository.create(country);
+        return this.countryRepository.save(country);
     }
 
     @Override
     public Optional<Country> read(Country country) {
-        return Optional.ofNullable(this.countryRepository.read(country.getCountryID()));
+        return Optional.ofNullable(this.countryRepository.read(country.getCountryID()).get());
     }
 
     @Override

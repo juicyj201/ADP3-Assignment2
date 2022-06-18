@@ -1,8 +1,6 @@
-package za.ac.cput.Repository.Impl;
+package za.ac.cput.Repository.Interface.Impl;
 
-import za.ac.cput.Domain.Entities.Address;
 import za.ac.cput.Domain.Entities.Lookup.EmployeeAddress;
-import za.ac.cput.Repository.Interface.AddressRepository;
 import za.ac.cput.Repository.Interface.EmployeeAddressRepository;
 
 import java.util.ArrayList;
@@ -32,7 +30,7 @@ public class EmployeeAddressRepositoryImpl implements EmployeeAddressRepository 
         Optional<EmployeeAddress> read = read(employeeAddress.getStaffId());
 
         if(read.isPresent()) {
-            delete(read.get());
+            delete(read.get().getStaffId());
         }
 
         this.employeeAddressList.add(employeeAddress);
@@ -53,7 +51,7 @@ public class EmployeeAddressRepositoryImpl implements EmployeeAddressRepository 
     }
 
     @Override
-    public void delete(EmployeeAddress employeeAddress) {
-        employeeAddressList.remove(employeeAddress);
+    public void delete(String id) {
+        employeeAddressList.remove(id);
     }
 }

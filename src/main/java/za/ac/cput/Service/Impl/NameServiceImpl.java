@@ -29,17 +29,17 @@ public class NameServiceImpl implements NameService
 
     @Override
     public Optional<Name> read(Name name) {
-        return this.nameRepo.findById(name.getCompositeId());
+        return this.nameRepo.read(name.getCompositeId());
     }
 
     @Override
     public void delete(Name name) {
-        this.nameRepo.delete(name);
+        this.nameRepo.delete(name.getCompositeId());
     }
 
     @Override
     public List<Name> readAll() {
-        return this.nameRepo.findAll();
+        return this.nameRepo.readAll();
     }
 
     @Override

@@ -20,5 +20,5 @@ public interface EmployeeAddressRepository extends IRepository<EmployeeAddress, 
     EmployeeAddress save(EmployeeAddress employeeAddress);
     Optional<EmployeeAddress> read(String id);
     List<EmployeeAddress> readAll();
-    void delete(EmployeeAddress employeeAddress);
+    void delete(String id);
 }
