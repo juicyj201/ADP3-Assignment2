@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 import za.ac.cput.Domain.Entities.Address;
 import za.ac.cput.Domain.Entities.City;
 import za.ac.cput.Factory.AddressFactory;
+import za.ac.cput.Repository.Impl.AddressRepositoryImpl;
 import za.ac.cput.Repository.Interface.AddressRepository;
+import za.ac.cput.Service.Interface.AddressService;
 
 
 /**
@@ -17,12 +19,12 @@ import za.ac.cput.Repository.Interface.AddressRepository;
 
 public class AddressServiceImplTest {
     private Address addr = new AddressFactory().buildAddress("01","Heights", "45", "Boxenberg", 4500, new City());
-    private AddressRepository repo = null;
-    private AddressServiceImpl service = new AddressServiceImpl(repo);
+    //private AddressRepository repo = null;
+    private AddressServiceImpl service = new AddressServiceImpl();
 
     @Test
     public void testEr(){
-
+        Assertions.assertNotNull(service.save(addr));
     }
 
     /**

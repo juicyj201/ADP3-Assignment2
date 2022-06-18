@@ -2,6 +2,7 @@ package za.ac.cput.Repository.Interface;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import za.ac.cput.Domain.Entities.Address;
 import za.ac.cput.Domain.Entities.Lookup.EmployeeAddress;
 
 import java.util.List;
@@ -15,6 +16,9 @@ import java.util.Optional;
  */
 
 @Repository
-public interface EmployeeAddressRepository extends JpaRepository<EmployeeAddress, String> {
-    //classes inheriting or implementing this repository will have access to JpaRepo operations
+public interface EmployeeAddressRepository extends IRepository<EmployeeAddress, String> {
+    EmployeeAddress save(EmployeeAddress employeeAddress);
+    Optional<EmployeeAddress> read(String id);
+    List<EmployeeAddress> readAll();
+    void delete(EmployeeAddress employeeAddress);
 }
