@@ -12,6 +12,9 @@ import java.util.List;
  *  Question 3
  **/
 
-public interface IRepository<T>{
-    //methods inheriting from the generic interface will obtain the JPARepo's methods
+public interface IRepository<T, ID>{
+    T create(T t);
+    T read(ID id);
+    T update(T t);
+    void delete(ID id);
 }
