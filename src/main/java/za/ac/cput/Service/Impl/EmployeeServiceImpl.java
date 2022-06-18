@@ -1,11 +1,15 @@
 package za.ac.cput.Service.Impl;
 
 
+import org.springframework.stereotype.Service;
+import za.ac.cput.Domain.Entities.City;
 import za.ac.cput.Domain.Entities.Employee;
-import za.ac.cput.Repository.Impl.EmployeeRepositoryImpl;
+import za.ac.cput.Domain.Entities.Lookup.EmployeeAddress;
+import za.ac.cput.Domain.Entities.Name;
+import za.ac.cput.Repository.Interface.EmployeeAddressRepository;
 import za.ac.cput.Repository.Interface.EmployeeRepository;
+import za.ac.cput.Repository.Interface.Impl.EmployeeRepositoryImpl;
 import za.ac.cput.Service.Interface.EmployeeService;
-
 import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.Optional;
@@ -13,37 +17,37 @@ import java.util.Optional;
 /**
  * Matthew Jones
  * 220077681
- * Question 4, 5 & 6
+ * Question 4
  */
 
+
+@Service
 public class EmployeeServiceImpl implements EmployeeService
 {
     private final EmployeeRepository empRepo;
-    private static EmployeeService empService;
+    private EmployeeAddressRepository empAddRepo;
+    private static EmployeeService service;
 
     public EmployeeServiceImpl(){
         this.empRepo = EmployeeRepositoryImpl.getEmployeeRepository();
     }
 
-    public static EmployeeService getService()
-    {
-        if (empService == null)
-            empService = new EmployeeServiceImpl();
-        return empService;
-    }
+    public static EmployeeService getService(){
+        if(service == null){
+            service = new EmployeeServiceImpl();
+        }
 
-    public EmployeeServiceImpl(EmployeeRepository empRepo){
-        this.empRepo = empRepo;
+        return service;
     }
 
     @Override
     public Employee save(Employee employee) {
-        return this.empRepo.create(employee);
+        return this.empRepo.save(employee);
     }
 
     @Override
     public Optional<Employee> read(Employee employee) {
-        return Optional.ofNullable(this.empRepo.read(employee.getStaffId()));
+        return this.empRepo.read(employee.getStaffId());
     }
 
     @Override
@@ -53,12 +57,12 @@ public class EmployeeServiceImpl implements EmployeeService
 
     @Override
     public List<Employee> readAll() {
-        return this.empRepo.getAll();
+        return this.empRepo.readAll();
     }
 
     @Override
     public String getEmployeeNameByEmail(String employeeEmail) {
-        List<Employee> empName = this.empRepo.getAll();
+        List<Employee> empName = this.empRepo.readAll();
         for(Employee name : empName){
             if(name.getEmail().equals(employeeEmail)){
                 return name.getName().toString();
@@ -67,7 +71,6 @@ public class EmployeeServiceImpl implements EmployeeService
         return null;
     }
 
-
     @Override
     public List<Employee> getAll() {
         return null;
@@ -75,12 +78,12 @@ public class EmployeeServiceImpl implements EmployeeService
 
     @Override
     public String getEmployeeNameByCity(String cityId) {
-        List<Employee> empName = this.empRepo.getAll();
-        for (Employee name : empName)
-        {
-            if (name.getName().equals(cityId))
-            {
-                return name.getName().toString();
+        List<EmployeeAddress> empAddName = this.empAddRepo.readAll();
+        List<Employee> emp = this.empRepo.readAll();
+        for(EmployeeAddress addr : empAddName){
+            if(addr.getAddress().getCity().getCityID().equals(cityId)){
+                String empId = addr.getStaffId();
+                return this.empRepo.read(empId).toString();
             }
         }
         return null;

@@ -58,15 +58,18 @@ public class Student {
        private String studentID;
        private String email;
        private Name name;
+
        public StudentBuilder setStudentID(String studentID) {
            this.studentID = studentID;
            return this;
        }
 
-       public StudentBuilder(){
-           if (name.equals(null)) {
-               throw new IllegalArgumentException("Address cannot be null");}
-               this.name = name;}
+       public StudentBuilder() {
+           this.studentID = studentID;
+           this.email = email;
+           this.name = name;
+       }
+
 
        public StudentBuilder setEmail(String email) {
            this.email = email;
@@ -85,7 +88,11 @@ public class Student {
            return student;
        }
 
-       public Student builder(){ return new Student(this);}
+       public Student builder(){
+           if (name.equals(null)) {
+               throw new IllegalArgumentException("Address cannot be null");
+           }
+       return new Student(this);}
 
    }
 

@@ -3,6 +3,7 @@ package za.ac.cput.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import za.ac.cput.Domain.Entities.Address;
@@ -13,7 +14,13 @@ import za.ac.cput.Service.Impl.EmployeeServiceImpl;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+/**
+ * Matthew Jones
+ * 220077681
+ * Question 9
+ */
+
+@Controller
 @RequestMapping("school-management/employee")
 public class EmployeeController {
     private final EmployeeServiceImpl service;
@@ -54,23 +61,8 @@ public class EmployeeController {
 
     @GetMapping("getEmployeeNameByEmail/{employeeEmail}")
     public ResponseEntity<String> getEmployeeNameByEmail(@PathVariable String employeeEmail){
-        //This is a method that is static and can be called from within the EmployeeServiceImpl class.
-        //The method returns a list of employee names, instead of employee objects. It is almost
-        //exactly the same as the read but is static.
-
         String name = this.service.getEmployeeNameByEmail(employeeEmail);
         return ResponseEntity.ok(name);
     }
-
-     @GetMapping("getEmployeeNameByCity/{cityId}")
-     public ResponseEntity<List<String>> getEmployeeNameByCity(@PathVariable String cityId){
-        //This is a method that is static and can be called from within the EmployeeServiceImpl class.
-        //The method returns a list of employee names, instead of employee objects. It is almost
-        //exactly the same as the read but is static.
-
-         // List<String> empNames = EmployeeServiceImpl.getEmployeeNameByCity(cityId);
-        //return ResponseEntity.ok(empNames);
-        return null;
-     }
 
 }

@@ -18,9 +18,15 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Matthew Jones
+ * 220077681
+ * Question 4
+ */
+
 public class EmployeeServiceImplTest {
     private EmployeeRepository repo;
-    private EmployeeServiceImpl service = new EmployeeServiceImpl(repo);
+    private EmployeeServiceImpl service = new EmployeeServiceImpl();
     private Employee emp;
     private EmployeeService empService;
 

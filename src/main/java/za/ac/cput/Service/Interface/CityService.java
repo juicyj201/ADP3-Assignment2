@@ -22,7 +22,7 @@ public interface CityService extends IService<City>{
     City save(City city);
     Optional<City> read(City city);
     void delete(City city);
-    City getCitiesByCountryId(String countryID);
+    List<City> getCitiesByCountryId(String countryID);
     List<City> readAll();
 
 }

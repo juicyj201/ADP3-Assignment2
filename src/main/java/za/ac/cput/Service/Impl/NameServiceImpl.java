@@ -1,5 +1,6 @@
 package za.ac.cput.Service.Impl;
 
+import org.springframework.stereotype.Service;
 import za.ac.cput.Domain.Entities.Name;
 import za.ac.cput.Repository.Interface.NameRepository;
 import za.ac.cput.Service.Interface.NameService;
@@ -13,6 +14,7 @@ import java.util.Optional;
  * Question 4
  */
 
+@Service
 public class NameServiceImpl implements NameService
 {
     private final NameRepository nameRepo;
@@ -29,17 +31,17 @@ public class NameServiceImpl implements NameService
 
     @Override
     public Optional<Name> read(Name name) {
-        return this.nameRepo.findById(name.getCompositeId());
+        return this.nameRepo.read(name.getCompositeId());
     }
 
     @Override
     public void delete(Name name) {
-        this.nameRepo.delete(name);
+        this.nameRepo.delete(name.getCompositeId());
     }
 
     @Override
     public List<Name> readAll() {
-        return this.nameRepo.findAll();
+        return this.nameRepo.readAll();
     }
 
     @Override
