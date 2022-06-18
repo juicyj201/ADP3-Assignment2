@@ -1,6 +1,7 @@
 package za.ac.cput.Service.Impl;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.Domain.Entities.Address;
@@ -84,6 +85,11 @@ class StudentServiceImplTest {
         List<Student> studentList = studentService.readAll();
         assertEquals(0, studentList.size());
         System.out.println(studentList);
+    }
+
+    @Test
+    public void testGetNames(){
+        Assertions.assertNull(this.studentService.studentLastNameByCountryId("01"));
     }
 
     @AfterEach

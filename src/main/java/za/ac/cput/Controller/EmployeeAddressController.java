@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import za.ac.cput.Domain.Entities.Lookup.EmployeeAddress;
 import za.ac.cput.Service.Impl.EmployeeAddressServiceImpl;
+import za.ac.cput.Service.Impl.FacadeService;
 
 import java.util.List;
 import java.util.Optional;
@@ -53,7 +54,7 @@ public class EmployeeAddressController {
 
     @GetMapping("getEmployeeNameByCity/{cityId}")
     public ResponseEntity<String> getEmployeeNameByCity(@PathVariable String cityId){
-        String empNames = this.service.getEmployeeNameByCity(cityId);
+        String empNames = FacadeService.getEmployeeNameByCity(cityId);
         return ResponseEntity.ok(empNames);
     }
 }
